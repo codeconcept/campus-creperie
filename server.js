@@ -1,11 +1,15 @@
 const express = require("express");
 const app = express();
 const fs = require("fs");
+const expressLayouts = require("express-ejs-layouts");
 const filename = `messages-${Date.now()}.txt`;
 const writer = fs.createWriteStream(filename, { flags: "a" });
 
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
+
+app.set("layout", "layouts/layout");
+app.use(expressLayouts);
 
 app.use(express.urlencoded({ extended: true }));
 
