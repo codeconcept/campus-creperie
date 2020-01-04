@@ -1,25 +1,34 @@
-<%- include('./partials/header.ejs') %>
-
 <h2>Contact</h2>
 
 <div>
-    Adresse : <%= coords.address %>
+  Adresse : <%= coords.address %>
 </div>
 <div>
-    Tél : <%= coords.tel %>
+  Tél : <%= coords.tel %>
 </div>
 <div>
-    email : <%= coords.email %>
+  email : <%= coords.email %>
 </div>
 <hr />
 <div>
-    <form action="/contact" method="POST">
-        <label for="subject"> Sujet </label><br />
-        <input type="text" name="subject" id="subject" placeholder="Cest à quel sujet" />
-        <br />
-        <label for="message"> Message </label><br />
-        <textarea name="message" id="message" cols="30" rows="10" placeholder="Exprimez-vous"></textarea>
-        <br />
-        <input type="submit" value="envoyer" />
-    </form>
+  <form action="/contact" method="POST">
+    <label for="subject"> Sujet </label><br />
+    <input
+      type="text"
+      name="subject"
+      id="subject"
+      placeholder="Cest à quel sujet"
+    />
+    <br />
+    <label for="message"> Message </label><br />
+    <textarea
+      name="message"
+      id="message"
+      cols="30"
+      rows="10"
+      placeholder="Exprimez-vous"
+    ></textarea>
+    <br />
+    <input type="submit" value="envoyer" />
+  </form>
 </div>
