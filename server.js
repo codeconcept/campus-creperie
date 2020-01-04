@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const fs = require("fs");
+const writer = fs.createWriteStream("messages.txt");
 
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
@@ -33,9 +35,14 @@ app.get("/contact", (req, res) => {
 
 app.post("/contact", (req, res) => {
   console.log("req.body", req.body);
-  const message = req.body;
+  const message = { message: req.body, date: new Date().toISOString() };
   messages = [...messages, message];
-  console.log("messages", messages);
+  writer.write(JSON.stringify(messages), err => {
+    if (err) {
+      return res.status(500).send({ msg: "Error saving data " });
+    }
+    // console.log("JSON.stringify(messages)", JSON.stringify(messages));
+  });
   res.render("contact", { coords });
 });
 
